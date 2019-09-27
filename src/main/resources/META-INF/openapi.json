@@ -1,0 +1,197 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "lovations.demo",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/locations": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/location"
+                                    }
+                                },
+                                "examples": {
+                                    "all": {
+                                        "value": [
+                                            {
+                                                "id": 1,
+                                                "name": "International Inc Corporate Office",
+                                                "location": {
+                                                    "lat": 51.5013673,
+                                                    "lng": -0.1440787
+                                                },
+                                                "type": "headquarter",
+                                                "status": "1"
+                                            },
+                                            {
+                                                "id": 2,
+                                                "name": "International Inc North America",
+                                                "location": {
+                                                    "lat": 40.6976701,
+                                                    "lng": -74.259876
+                                                },
+                                                "type": "office",
+                                                "status": "1"
+                                            },
+                                            {
+                                                "id": 3,
+                                                "name": "International Inc France",
+                                                "location": {
+                                                    "lat": 48.859,
+                                                    "lng": 2.2069746
+                                                },
+                                                "type": "office",
+                                                "status": "1"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "todas las colcaucines"
+                    }
+                }
+            }
+        },
+        "/location/bbva/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/location"
+                                }
+                            }
+                        },
+                        "description": "solo 1 "
+                    }
+                }
+            }
+        },
+        "/location/{id}/": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/location"
+                                }
+                            }
+                        },
+                        "description": "respuesta de prueba"
+                    }
+                }
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            },
+                            "examples": {
+                                "id": {
+                                    "value": {
+                                        "id": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/location"
+                                }
+                            }
+                        },
+                        "description": "cadeba de prueba "
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "location": {
+                "title": "Root Type for location",
+                "description": "{\r\n    \"id\": 1,\r\n    \"name\": \"International Inc Corporate Office\",\r\n    \"location\": {\r\n        \"lat\": 51.5013673,\r\n        \"lng\": -0.1440787\r\n    },\r\n    \"type\": \"headquarter\",\r\n    \"status\": \"1\"\r\n}",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "object",
+                        "properties": {
+                            "lat": {
+                                "format": "double",
+                                "type": "number"
+                            },
+                            "lng": {
+                                "format": "double",
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "id": 1,
+                    "name": "International Inc Corporate Office",
+                    "location": {
+                        "lat": 51.5013673,
+                        "lng": -0.1440787
+                    },
+                    "type": "headquarter",
+                    "status": "1"
+                }
+            }
+        }
+    }
+}
